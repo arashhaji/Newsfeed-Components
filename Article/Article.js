@@ -73,6 +73,11 @@ const data = [
   {
     title: 'Professional Software Development in 2019',
     date: 'Jan 1st, 2019',
+    firstParagraph: `May the force be with you! `,
+
+    secondParagraph: `The force is strong my friend! `,
+
+    thirdParagraph: `Luke I am your father!`
   }
 ];
 
@@ -100,3 +105,59 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+//function
+
+function articleCreator(info){
+
+//elements
+const mainDiv = document.createElement('div');
+const titleArticle = document.createElement('h2');
+const dateArticle = document.createElement('p');
+const paragraph1 = document.createElement('p');
+const paragraph2 = document.createElement('p');
+const paragraph3 = document.createElement('p');
+const expandButton = document.createElement('span');
+
+//classes
+mainDiv.classList.add("article");
+titleArticle.classList.add("h2");
+dateArticle.classList.add("date");
+expandButton.classList.add("expandButton");
+
+//content
+titleArticle.textContent = info.title;
+dateArticle.textContent = info.date;
+paragraph1.textContent = info.firstParagraph;
+paragraph2.textContent = info.secondParagraph;
+paragraph3.textContent = info.thirdParagraph;
+expandButton.textContent = "button";
+
+
+//button
+
+expandButton.addEventListener("click", e => {
+  mainDiv.classList.toggle("article-open");
+});
+
+
+
+//append
+
+mainDiv.appendChild(titleArticle);
+mainDiv.appendChild(dateArticle);
+mainDiv.appendChild(paragraph1);
+mainDiv.appendChild(paragraph2);
+mainDiv.appendChild(paragraph3);
+mainDiv.appendChild(expandButton);
+
+
+return mainDiv;
+
+}
+
+const article = document.querySelector(".articles");
+
+data.forEach(cv => {
+  article.appendChild(articleCreator(cv));
+});
+
